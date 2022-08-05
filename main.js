@@ -3,8 +3,8 @@ const winners =[];
 
 function game() {
   playRound();
-  for(let i = 0; i <= 5; i++ ){
-    playRound()
+  for(let i = 1; i <= 5; i++ ){
+    playRound(i)
   }
   logWins;
 
@@ -12,13 +12,12 @@ function game() {
 
 
 
-function playRound() {
+function playRound(round) {
   const playerSelection = playerChoice();
   const computerSelection = computerChoice();
-  console.log(computerSelection)
   const winner = checkWinner(playerSelection, computerSelection);
-  console.log(winner);
   winners.push(winner);
+  logRound(playerSelection,computerSelection,winner);
 
 }
 function playerChoice() {
@@ -65,10 +64,23 @@ function checkWinner (choiceP, choiceC) {
  }
 }
 
-function logWins (){
- let playerWins = winners.filter((item) => item == 'Player')
+function logWins() {
+ let playerWins = winners.filter((item) => item == "Player").length;
+ let computerWins = winners.filter((item) => item == "Computer").length;
+ let ties = winners.filter((item) => item == "Tie").length;
+ console.log("Results:");
+ console.log("Player Wins:", playerWins);
+ console.log("Computer Wins:", computerWins);
+ console.log("Ties:", ties);
 }
 
+function logRound (playerChoice,computerChoice,winner,round){
+
+console.log('Round:', round);
+console.log('Player Chose:', playerChoice);
+console.log('Computer Chose:', computerChoice);
+console.log('Won the Round')
+}
 
 
 
