@@ -3,10 +3,10 @@ const winners =[];
 
 function game() {
   playRound();
-  for(let i = 1; i <= 5; i++ ){
+  for(let i = 1; i <= 5; i++) {
     playRound(i)
   }
-  logWins;
+  logWins();
 
 }
 
@@ -17,9 +17,10 @@ function playRound(round) {
   const computerSelection = computerChoice();
   const winner = checkWinner(playerSelection, computerSelection);
   winners.push(winner);
-  logRound(playerSelection,computerSelection,winner);
+  logRound(playerSelection, computerSelection, winner, round);
 
 }
+
 function playerChoice() {
   let input = prompt("Type Rock, Paper, or Scissors");
   while (input == null) {
@@ -42,7 +43,7 @@ function playerChoice() {
 }
 
 function computerChoice() {
-  return choices[Math.floor(Math.random()*choices.length)];
+  return choices[Math.floor(Math.random() * choices.length)];
 
 }
 function validateInput(choice) {
@@ -74,14 +75,14 @@ function logWins() {
  console.log("Ties:", ties);
 }
 
-function logRound (playerChoice,computerChoice,winner,round){
+function logRound(playerChoice, computerChoice, winner, round) {
 
 console.log('Round:', round);
 console.log('Player Chose:', playerChoice);
 console.log('Computer Chose:', computerChoice);
-console.log('Won the Round')
+console.log(winner, 'Won the Round')
+console.log("-------------------------------");
 }
 
 
 
-game();
